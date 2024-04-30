@@ -7,12 +7,11 @@
 
 #include<string>
 #include<vector>
-
 using namespace std;
 
-class Player {
+class Player : public Subject {
 private:
-    string name
+    string name;
     Item[] inventory;
 public:
     string getName();
