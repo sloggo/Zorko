@@ -13,7 +13,7 @@ protected:
     string name;
     string description;
 public:
-    void use();
+    virtual void use();
 };
 
 #endif //UNTITLED2_ITEM_H

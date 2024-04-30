@@ -8,4 +8,5 @@ add_executable(untitled2 main.cpp
         Headers/Player.h
         Headers/Subject.h
         Headers/Observer.h
-        Headers/Item.h)
+        Headers/Item.h
+        Headers/Weapon.h)
