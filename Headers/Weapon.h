@@ -13,6 +13,7 @@ private:
     int dmg;
     int durability;
 public:
+    Weapon(string,string,int,int);
     void use() override;
 };
 

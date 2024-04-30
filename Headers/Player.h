@@ -17,6 +17,7 @@ private:
     string name;
     Item[] inventory;
 public:
+    Player(string);
     string getName();
     void setName(string);
 

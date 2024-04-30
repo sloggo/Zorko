@@ -13,6 +13,7 @@ protected:
     string name;
     string description;
 public:
+    Item(string, string);
     virtual void use();
 };
 
