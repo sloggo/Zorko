@@ -9,4 +9,5 @@ add_executable(untitled2 main.cpp
         Headers/Subject.h
         Headers/Observer.h
         Headers/Item.h
-        Headers/Weapon.h)
+        Headers/Weapon.h
+        Headers/Enemy.h)

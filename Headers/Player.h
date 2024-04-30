@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Player : public Subject {
+class Player : public Subject, public Battlable {
 private:
     string name;
     Item[] inventory;
