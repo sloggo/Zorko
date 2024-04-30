@@ -14,7 +14,6 @@ class Player {
 private:
     string name
     Item[] inventory;
-    vector<Observer> observers;
 public:
     string getName();
     void setName(string);

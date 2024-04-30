@@ -4,6 +4,6 @@ project(untitled2)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(untitled2 main.cpp
-        Player.cpp
-        Player.h
-        Player.h)
+        Headers/Player.h
+        Headers/Player.h
+        Headers/Subject.h)
