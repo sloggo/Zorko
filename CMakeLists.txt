@@ -6,4 +6,5 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(untitled2 main.cpp
         Headers/Player.h
         Headers/Player.h
-        Headers/Subject.h)
+        Headers/Subject.h
+        Headers/Observer.h)
