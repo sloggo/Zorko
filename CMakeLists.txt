@@ -11,4 +11,7 @@ add_executable(untitled2 main.cpp
         Headers/Item.h
         Headers/Weapon.h
         Headers/Enemy.h
-        Headers/Battlable.h)
+        Headers/Battlable.h
+        Headers/Runnable.h
+        Headers/Room.h
+        Headers/Stage.h)
