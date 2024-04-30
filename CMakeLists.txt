@@ -10,4 +10,5 @@ add_executable(untitled2 main.cpp
         Headers/Observer.h
         Headers/Item.h
         Headers/Weapon.h
-        Headers/Enemy.h)
+        Headers/Enemy.h
+        Headers/Battlable.h)
