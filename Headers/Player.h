@@ -7,6 +7,9 @@
 
 #include<string>
 #include<vector>
+#include "Subject.h"
+#include "Item.h"
+
 using namespace std;
 
 class Player : public Subject {
