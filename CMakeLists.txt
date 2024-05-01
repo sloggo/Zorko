@@ -14,4 +14,8 @@ add_executable(untitled2 main.cpp
         Headers/Battlable.h
         Headers/Runnable.h
         Headers/Room.h
-        Headers/Stage.h)
+        Headers/Stage.h
+        Classes/Subject.cpp
+        Classes/Observer.cpp
+        Headers/InputHandler.h
+)

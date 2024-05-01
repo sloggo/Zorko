@@ -9,6 +9,7 @@
 #include<vector>
 #include "Subject.h"
 #include "Item.h"
+#include "Battlable.h"
 
 using namespace std;
 
