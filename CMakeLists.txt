@@ -18,4 +18,5 @@ add_executable(untitled2 main.cpp
         Classes/Subject.cpp
         Classes/Observer.cpp
         Headers/InputHandler.h
+        Classes/InputHandler.cpp
 )
