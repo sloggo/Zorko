@@ -4,7 +4,7 @@
 
 #ifndef UNTITLED2_BATTLABLE_H
 #define UNTITLED2_BATTLABLE_H
-#include "Weapon.h";
+#include "Weapon.h"
 
 using namespace std;
 
@@ -13,10 +13,7 @@ private:
     int hp;
     Weapon weapon;
 protected:
-    Battlable(Weapon weapon) {
-        hp = 100;
-        weapon = weapon; // implement
-    }
+    Battlable(Weapon);
 
 public:
     void takeDmg(int);

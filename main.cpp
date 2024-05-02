@@ -1,16 +1,21 @@
 #include <iostream>
 #include "Headers/InputHandler.h"
-#include "Headers/Room.h"
+//#include "Headers/Room.h"
+#include "Headers/Player.h"
 
-Room currentRoom;
+//Room currentRoom;
 
 int main() {
-    InputHandler* i = InputHandler::getInstance();
+    Player* plyr = Player::getInstance();
 
-    i->processInput("go north");
-    vector<string> testForce = i->getProcessedInput();
+    plyr->pickup(*new Item("Potion", "Used to heal self."));
 
-    cout << testForce[1] << endl;
+    vector<Item> inv = plyr->getInventory();
 
+    for(Item i: inv){
+        cout << i.getName() << endl;
+        cout << i.getDescription() << endl;
+        cout << "-------" << endl;
+    }
     return 0;
 }

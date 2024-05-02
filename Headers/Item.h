@@ -15,6 +15,9 @@ protected:
 public:
     Item(string, string);
     virtual void use();
+
+    string getName();
+    string getDescription();
 };
 
 #endif //UNTITLED2_ITEM_H

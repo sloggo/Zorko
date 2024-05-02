@@ -5,6 +5,9 @@
 #ifndef UNTITLED2_OBSERVER_H
 #define UNTITLED2_OBSERVER_H
 
+#include<string>
+#include<vector>
+
 using namespace std;
 
 class Observer{
@@ -12,7 +15,7 @@ private:
     int id;
 public:
     Observer(int);
-    void update(int,int); // for updating location
+    virtual void update(pair<int,int>); // for updating location
     bool operator==(const Observer& a) const
     {
         return equals(a);

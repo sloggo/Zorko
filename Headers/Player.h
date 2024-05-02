@@ -23,9 +23,10 @@ private:
     void move(pair<int,int>); // CALL UPDATE
 public:
     static Player* getInstance();
-    Player(Weapon);
+    explicit Player(Weapon);
 
     pair<int,int> getLoc();
+    vector<Item> getInventory();
 
     void pickup(Item);
     void drop(Item);

@@ -3,6 +3,8 @@
 //
 
 #include "../Headers/Player.h"
+#include "../Headers/Subject.h"
+#include<iostream>
 
 using namespace std;
 
@@ -16,12 +18,32 @@ Player* Player::getInstance() {
     return instance;
 }
 
-Player::Player(Weapon weaponIn) : Battlable(weaponIn){
+Player::Player(Weapon weaponIn) : Battlable(weaponIn), Subject() {
     inventory.push_back(weaponIn);
     loc = make_pair(0,0);
 }
 
 pair<int,int> Player::getLoc() {
     return loc;
+}
+
+vector<Item> Player::getInventory() {
+    return inventory;
+}
+
+void Player::move(pair<int, int> l) {
+    loc = l;
+    for(Observer o: observers){
+        o.update(l);
+    }
+}
+
+void Player::pickup(Item i) {
+    cout << "Picked up "+i.getName()+"!" << endl;
+    inventory.push_back(i);
+}
+
+void Player::drop(Item) {
+    cout <<"tbi"<<endl;
 }
 

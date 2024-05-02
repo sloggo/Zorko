@@ -10,3 +10,7 @@ Observer::Observer(int idIn) {
 bool Observer::equals(Observer o) const {
     return this->id == o.id;
 }
+
+void Observer::update(pair<int, int>) {
+
+}

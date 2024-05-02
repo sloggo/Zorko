@@ -22,4 +22,5 @@ add_executable(untitled2 main.cpp
         Classes/Player.cpp
         Classes/Weapon.cpp
         Classes/Item.cpp
+        Classes/Battlable.cpp
 )

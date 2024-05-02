@@ -5,7 +5,7 @@
 #ifndef UNTITLED2_ROOM_H
 #define UNTITLED2_ROOM_H
 #include<string>
-#include "Runnable.h";
+#include "Runnable.h"
 
 using namespace std;
 
@@ -13,9 +13,9 @@ class Room : public Runnable{
 private:
     int id;
     vector<Stage> stages;
-    tuple<int> location;
+    pair<int,int> location;
 public:
-    Room(int, vector<Stage>, tuple<int>);
+    Room(int, vector<Stage>, pair<int,int>);
     void run() override;
 };
 
