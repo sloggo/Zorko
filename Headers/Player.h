@@ -15,10 +15,11 @@ using namespace std;
 
 class Player : public Subject, public Battlable {
 private:
+    friend InputHandler;
     static Player* instance;
     string name;
     Item[] inventory;
-    int[] loc;
+    pair<int,int> loc;
 public:
     static Player* getInstance();
     Player(string);

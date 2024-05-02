@@ -45,15 +45,15 @@ vector<string> InputHandler::getProcessedInput() {
 void InputHandler::processMovement(){
     Player* plyr = Player::getInstance();
     string direction = processedInput[1];
-    int[] currentLoc = plyr->getLoc();
+    pair<int,int> currentLoc = plyr->loc;
 
     if(direction == "north"){
-        plyr->move(currentLoc[0], currentLoc[1]+1)
+        plyr->loc.second = currentLoc.second+1; //friendship allows direct access to loc attribute
     }else if(direction == "south"){
-        plyr->move(currentLoc[0], currentLoc[1]-1)
+        plyr->loc.second = currentLoc.second-1;
     }else if(direction == "east"){
-        plyr->move(currentLoc[0]+1, currentLoc[1])
+        plyr->loc.first = currentLoc.first+1;
     }else if(direction == "west"){
-        plyr->move(currentLoc[0]-1, currentLoc[1])
+        plyr->loc.first = currentLoc.first-1;
     }
 }

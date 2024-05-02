@@ -1,5 +1,8 @@
 #include <iostream>
 #include "Headers/InputHandler.h"
+#include "Headers/Room.h"
+
+Room currentRoom;
 
 int main() {
     InputHandler* i = InputHandler::getInstance();
