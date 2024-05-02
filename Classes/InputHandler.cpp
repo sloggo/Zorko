@@ -7,6 +7,7 @@
 #include<iostream>
 #include <sstream>
 #include "../Headers/Player.h"
+#include"../utils.h"
 
 using namespace std;
 
@@ -19,13 +20,14 @@ InputHandler* InputHandler::getInstance() {
     return instance;
 }
 
-void InputHandler::takeInInput() {
+void InputHandler::takeInInput(string type, int stageId) {
     string input;
     getline(cin, input);
-    processInput(input);
+    processInput(input, type, stageId);
 }
 
-void InputHandler::processInput(string inputWords) {
+
+void InputHandler::processInput(string inputWords, string type, int id) {
     stringstream ss(inputWords);
 
     vector<string> words;
@@ -36,6 +38,12 @@ void InputHandler::processInput(string inputWords) {
     }
 
     processedInput = words;
+
+    if(type == "move"){
+        processMovement();
+    } else if(type == "item"){
+        processPickup(id);
+    }
 }
 
 vector<string> InputHandler::getProcessedInput() {
@@ -43,6 +51,11 @@ vector<string> InputHandler::getProcessedInput() {
 }
 
 void InputHandler::processMovement(){
+    if(processedInput[0] != "go"){
+        cout << "Invalid input!" << endl;
+        takeInInput("move", 0);
+    }
+
     Player* plyr = Player::getInstance();
     string direction = processedInput[1];
     pair<int,int> currentLoc = plyr->loc;
@@ -61,4 +74,9 @@ void InputHandler::processMovement(){
         newLoc.first = currentLoc.first-1;
         plyr->move(newLoc);
     }
+}
+
+void InputHandler::processPickup(int id){
+    Player* plyr = Player::getInstance();
+    plyr->pickup(getItemFromId(id));
 }

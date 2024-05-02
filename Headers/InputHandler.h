@@ -5,6 +5,7 @@
 #ifndef UNTITLED2_INPUTHANDLER_H
 #define UNTITLED2_INPUTHANDLER_H
 #include<string>
+#include"../Headers/Item.h"
 
 using namespace std;
 
@@ -18,11 +19,11 @@ public:
 
     static InputHandler* getInstance();
 
-    void takeInInput();
-
-    void processInput(string);
+    void takeInInput(string, int);
+    void processInput(string, string, int);
 
     vector<string> getProcessedInput();
+    void processPickup(int);
 };
 
 #endif //UNTITLED2_INPUTHANDLER_H

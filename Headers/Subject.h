@@ -11,10 +11,11 @@ using namespace std;
 
 class Subject {
 protected:
-    vector<Observer> observers;
+    vector<Observer*> observers;
 public:
-    void addObserver(Observer);
-    void removeObserver(Observer);
+    void addObserver(Observer*);
+    void removeObserver(Observer*);
+    void update(pair<int,int>);
 };
 
 #endif //UNTITLED2_SUBJECT_H

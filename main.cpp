@@ -3,8 +3,8 @@
 //#include "Headers/Room.h"
 #include "Headers/Player.h"
 #include "Headers/DataHandler.h"
-
-//Room currentRoom;
+#include "utils.h"
+#include "Headers/GameState.h"
 
 void printInv(vector<Item> inv){
     bool equipped = false;
@@ -16,23 +16,13 @@ void printInv(vector<Item> inv){
 }
 
 int main() {
-    Player* plyr = Player::getInstance();
+    GameState state = GameState();
+    state.addToPlayer();
 
-    Item i = *new Item("Potion", "Used to heal self.");
-
-    plyr->pickup(i);
-    vector<Item> inv = plyr->getInventory();
-    printInv(inv);
-
-    plyr->drop(i);
-    inv = plyr->getInventory();
-    printInv(inv);
-
-    DataHandler d = DataHandler();
-    vector<Room> data = d.importRoomData();
-
-    data[0].run();
-
+    while(true){
+        Room current = state.getCurrentRoom();
+        current.run();
+    }
     return 0;
 }
 

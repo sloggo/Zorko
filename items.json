@@ -1,0 +1,19 @@
+[
+  {
+    "id": 6,
+    "type": "weapon",
+    "name": "Rusted Sword",
+    "description": "Old rusted sword",
+    "dmg": 1,
+    "durability": 5
+  },
+
+  {
+    "id": 8,
+    "name": "Health Potion",
+    "type": "heal",
+    "description": "A potion that restores 50hp",
+    "hp": 50
+  }
+
+]

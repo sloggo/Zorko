@@ -21,6 +21,7 @@ public:
         return equals(a);
     }
     bool equals(Observer) const;
+    void addToPlayer();
 };
 
 #endif //UNTITLED2_OBSERVER_H

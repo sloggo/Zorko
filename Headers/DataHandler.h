@@ -11,7 +11,8 @@ using namespace std;
 
 class DataHandler{
 public:
-    vector<Room> importRoomData();
+    static vector<Room> importRoomData();
+    static vector<Item> importItemData();
 };
 
 #endif //UNTITLED2_DATAHANDLER_H

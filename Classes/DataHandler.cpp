@@ -7,6 +7,7 @@
 #include<iostream>
 #include"../Headers/Stage.h"
 #include"../Headers/Room.h"
+#include "../Headers/Weapon.h"
 
 using namespace std;
 using json = nlohmann::json; // Alias for nlohmann::json
@@ -28,12 +29,10 @@ vector<Room> DataHandler::importRoomData() {
 
     for (json::iterator room = jsonData.begin(); room != jsonData.end(); ++room) {
         // Each room
-        cout << (*room) << endl;
-
         vector<Stage> stages;
         for (json::iterator stage = (*room)["stages"].begin(); stage != (*room)["stages"].end(); ++stage) {
             // Each stage
-            cout << (*stage) << endl;
+
             Stage newStg = Stage((*stage)["id"], (*stage)["text"], (*stage)["type"]);
             stages.push_back(newStg);
         }
@@ -43,4 +42,33 @@ vector<Room> DataHandler::importRoomData() {
     }
 
     return rooms;
+}
+
+vector<Item> DataHandler::importItemData(){
+    ifstream file("../items.json");
+
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open items.json" << endl;
+        return {}; // Return an empty vector to indicate failure
+    }
+
+    json jsonData;
+
+    file >> jsonData;
+    file.close();
+
+    vector<Item> items;
+
+    for (json::iterator item = jsonData.begin(); item != jsonData.end(); ++item) {
+        // Each room
+        if((*item)["type"] == "weapon"){
+            Weapon newItem = Weapon((*item)["id"],(*item)["name"], (*item)["description"], (*item)["dmg"], (*item)["durability"]);
+            items.push_back(newItem);
+        } else if((*item)["type"] == "item"){
+            Item newItem = Item((*item)["id"],(*item)["name"], (*item)["description"]);
+            items.push_back(newItem);
+        }
+    }
+
+    return items;
 }

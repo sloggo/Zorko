@@ -19,6 +19,7 @@ private:
 public:
     Room(int, vector<Stage>, pair<int,int>);
     void run() override;
+    pair<int,int> getLoc();
 };
 
 #endif //UNTITLED2_ROOM_H

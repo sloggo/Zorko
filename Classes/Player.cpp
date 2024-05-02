@@ -12,7 +12,7 @@ Player* Player::instance = nullptr;
 
 Player* Player::getInstance() {
     if (instance == nullptr) {
-        Weapon starterWeapon = *new Weapon("Starter Sword", "A sword given to you by your father", 10, 10);
+        Weapon starterWeapon = *new Weapon(0,"Starter Sword", "A sword given to you by your father", 10, 10);
         instance = new Player(starterWeapon); // Allocate memory for the instance
     }
     return instance;
@@ -33,9 +33,7 @@ vector<Item> Player::getInventory() {
 
 void Player::move(pair<int, int> l) {
     loc = l;
-    for(Observer o: observers){
-        o.update(l);
-    }
+    update(l);
 }
 
 void Player::pickup(Item i) {

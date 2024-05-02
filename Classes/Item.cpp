@@ -7,7 +7,8 @@
 
 using namespace std;
 
-Item::Item(std::string nameI, std::string desc) {
+Item::Item(int idI, std::string nameI, std::string desc) {
+    id = idI;
     name = std::move(nameI);
     description = std::move(desc);
 }
@@ -26,4 +27,8 @@ void Item::use() {
 
 bool Item::equals(const Item& i) const {
     return this->name == i.name && this->description == i.description;
+}
+
+int Item::getId() {
+    return id;
 }

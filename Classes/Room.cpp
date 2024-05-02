@@ -5,6 +5,7 @@
 
 #include "../Headers/Room.h"
 #include "../Headers/Stage.h"
+#include "../Headers/DataHandler.h"
 
 Room::Room(int idI, vector<Stage> stgs, pair<int, int> loc) : Runnable() {
     id=idI;
@@ -16,4 +17,8 @@ void Room::run()  {
     for(Stage stg: stages){
         stg.run();
     }
+}
+
+pair<int,int> Room::getLoc() {
+    return location;
 }

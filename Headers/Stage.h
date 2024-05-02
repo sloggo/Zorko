@@ -6,6 +6,7 @@
 #define UNTITLED2_STAGE_H
 #include<string>
 #include "Runnable.h"
+#include "Item.h"
 
 using namespace std;
 

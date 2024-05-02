@@ -12,6 +12,7 @@ class Item{
 protected:
     string name;
     string description;
+    int id;
 public:
     bool equals(const Item&) const;
     bool operator==(const Item& a) const
@@ -19,11 +20,13 @@ public:
         return equals(a);
     }
 
-    Item(string, string);
+    Item(int, string, string);
     virtual void use();
 
     string getName();
     string getDescription();
+
+    int getId();
 };
 
 #endif //UNTITLED2_ITEM_H

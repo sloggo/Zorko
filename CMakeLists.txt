@@ -28,4 +28,8 @@ add_executable(untitled2 main.cpp
         Classes/Stage.cpp
         Classes/Room.cpp
         Classes/Runnable.cpp
+        utils.cpp
+        utils.h
+        Headers/GameState.h
+        Classes/GameState.cpp
 )

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Weapon::Weapon(string nameI, string descI, int damage, int dur) : Item(std::move(nameI),std::move(descI)) {
+Weapon::Weapon(int id, string nameI, string descI, int damage, int dur) : Item(std::move(id), std::move(nameI),std::move(descI)) {
     dmg = damage;
     durability = dur;
 }
