@@ -13,6 +13,12 @@ protected:
     string name;
     string description;
 public:
+    bool equals(const Item&) const;
+    bool operator==(const Item& a) const
+    {
+        return equals(a);
+    }
+
     Item(string, string);
     virtual void use();
 

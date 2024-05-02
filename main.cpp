@@ -5,17 +5,28 @@
 
 //Room currentRoom;
 
-int main() {
-    Player* plyr = Player::getInstance();
-
-    plyr->pickup(*new Item("Potion", "Used to heal self."));
-
-    vector<Item> inv = plyr->getInventory();
-
+void printInv(const vector<Item>& inv){
     for(Item i: inv){
         cout << i.getName() << endl;
         cout << i.getDescription() << endl;
         cout << "-------" << endl;
     }
+}
+
+int main() {
+    Player* plyr = Player::getInstance();
+
+    Item i = *new Item("Potion", "Used to heal self.");
+
+    plyr->pickup(i);
+    vector<Item> inv = plyr->getInventory();
+    printInv(inv);
+
+    plyr->drop(i);
+    inv = plyr->getInventory();
+    printInv(inv);
+
     return 0;
 }
+
+

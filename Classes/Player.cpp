@@ -43,7 +43,14 @@ void Player::pickup(Item i) {
     inventory.push_back(i);
 }
 
-void Player::drop(Item) {
-    cout <<"tbi"<<endl;
+void Player::drop(Item dropping) {
+
+    for (auto it = inventory.begin(); it != inventory.end(); ++it) {
+        if (*it == dropping) {
+            inventory.erase(it);
+            cout <<"Dropped "+dropping.getName()+"!"<<endl;
+            break;
+        }
+    }
 }
 

@@ -23,3 +23,7 @@ string Item::getDescription() {
 void Item::use() {
     cout << "Used "+name+"!" << endl;
 }
+
+bool Item::equals(const Item& i) const {
+    return this->name == i.name && this->description == i.description;
+}
