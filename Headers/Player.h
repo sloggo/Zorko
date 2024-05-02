@@ -10,6 +10,7 @@
 #include "Subject.h"
 #include "Item.h"
 #include "Battlable.h"
+#include "InputHandler.h"
 
 using namespace std;
 
@@ -17,18 +18,14 @@ class Player : public Subject, public Battlable {
 private:
     friend InputHandler;
     static Player* instance;
-    string name;
-    Item[] inventory;
+    vector<Item> inventory;
     pair<int,int> loc;
     void move(pair<int,int>); // CALL UPDATE
 public:
     static Player* getInstance();
-    Player(string);
+    Player(Weapon);
 
-    string getName();
-    void setName(string);
-
-    int[] getLoc();
+    pair<int,int> getLoc();
 
     void pickup(Item);
     void drop(Item);

@@ -19,4 +19,7 @@ add_executable(untitled2 main.cpp
         Classes/Observer.cpp
         Headers/InputHandler.h
         Classes/InputHandler.cpp
+        Classes/Player.cpp
+        Classes/Weapon.cpp
+        Classes/Item.cpp
 )

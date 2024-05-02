@@ -73,6 +73,24 @@ build CMakeFiles/untitled2.dir/Classes/InputHandler.cpp.o: CXX_COMPILER__untitle
   OBJECT_DIR = CMakeFiles/untitled2.dir
   OBJECT_FILE_DIR = CMakeFiles/untitled2.dir/Classes
 
+build CMakeFiles/untitled2.dir/Classes/Player.cpp.o: CXX_COMPILER__untitled2_unscanned_Debug /Users/joshsloggett/CLionProjects/Zorko2/Classes/Player.cpp || cmake_object_order_depends_target_untitled2
+  DEP_FILE = CMakeFiles/untitled2.dir/Classes/Player.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled2.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled2.dir/Classes
+
+build CMakeFiles/untitled2.dir/Classes/Weapon.cpp.o: CXX_COMPILER__untitled2_unscanned_Debug /Users/joshsloggett/CLionProjects/Zorko2/Classes/Weapon.cpp || cmake_object_order_depends_target_untitled2
+  DEP_FILE = CMakeFiles/untitled2.dir/Classes/Weapon.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled2.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled2.dir/Classes
+
+build CMakeFiles/untitled2.dir/Classes/Item.cpp.o: CXX_COMPILER__untitled2_unscanned_Debug /Users/joshsloggett/CLionProjects/Zorko2/Classes/Item.cpp || cmake_object_order_depends_target_untitled2
+  DEP_FILE = CMakeFiles/untitled2.dir/Classes/Item.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -fcolor-diagnostics
+  OBJECT_DIR = CMakeFiles/untitled2.dir
+  OBJECT_FILE_DIR = CMakeFiles/untitled2.dir/Classes
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target untitled2
@@ -81,7 +99,7 @@ build CMakeFiles/untitled2.dir/Classes/InputHandler.cpp.o: CXX_COMPILER__untitle
 #############################################
 # Link the executable untitled2
 
-build untitled2: CXX_EXECUTABLE_LINKER__untitled2_Debug CMakeFiles/untitled2.dir/main.cpp.o CMakeFiles/untitled2.dir/Classes/Subject.cpp.o CMakeFiles/untitled2.dir/Classes/Observer.cpp.o CMakeFiles/untitled2.dir/Classes/InputHandler.cpp.o
+build untitled2: CXX_EXECUTABLE_LINKER__untitled2_Debug CMakeFiles/untitled2.dir/main.cpp.o CMakeFiles/untitled2.dir/Classes/Subject.cpp.o CMakeFiles/untitled2.dir/Classes/Observer.cpp.o CMakeFiles/untitled2.dir/Classes/InputHandler.cpp.o CMakeFiles/untitled2.dir/Classes/Player.cpp.o CMakeFiles/untitled2.dir/Classes/Weapon.cpp.o CMakeFiles/untitled2.dir/Classes/Item.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk
   OBJECT_DIR = CMakeFiles/untitled2.dir
   POST_BUILD = :

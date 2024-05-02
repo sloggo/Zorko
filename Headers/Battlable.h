@@ -12,6 +12,12 @@ class Battlable{
 private:
     int hp;
     Weapon weapon;
+protected:
+    Battlable(Weapon weapon) {
+        hp = 100;
+        weapon = weapon; // implement
+    }
+
 public:
     void takeDmg(int);
     void heal(int);
