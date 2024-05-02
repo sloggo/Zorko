@@ -6,6 +6,7 @@
 #include<string>
 #include<iostream>
 #include <sstream>
+#include "../Headers/Player.h"
 
 using namespace std;
 
@@ -39,4 +40,20 @@ void InputHandler::processInput(string inputWords) {
 
 vector<string> InputHandler::getProcessedInput() {
     return processedInput;
+}
+
+void InputHandler::processMovement(){
+    Player* plyr = Player::getInstance();
+    string direction = processedInput[1];
+    int[] currentLoc = plyr->getLoc();
+
+    if(direction == "north"){
+        plyr->move(currentLoc[0], currentLoc[1]+1)
+    }else if(direction == "south"){
+        plyr->move(currentLoc[0], currentLoc[1]-1)
+    }else if(direction == "east"){
+        plyr->move(currentLoc[0]+1, currentLoc[1])
+    }else if(direction == "west"){
+        plyr->move(currentLoc[0]-1, currentLoc[1])
+    }
 }
