@@ -20,6 +20,7 @@ private:
     string name;
     Item[] inventory;
     pair<int,int> loc;
+    void move(pair<int,int>); // CALL UPDATE
 public:
     static Player* getInstance();
     Player(string);
@@ -28,7 +29,6 @@ public:
     void setName(string);
 
     int[] getLoc();
-    void move(int, int);
 
     void pickup(Item);
     void drop(Item);

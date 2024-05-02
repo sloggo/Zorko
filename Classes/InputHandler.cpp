@@ -46,14 +46,19 @@ void InputHandler::processMovement(){
     Player* plyr = Player::getInstance();
     string direction = processedInput[1];
     pair<int,int> currentLoc = plyr->loc;
+    pair<int,int> newLoc = make_pair(currentLoc.first, currentLoc.second);
 
     if(direction == "north"){
-        plyr->loc.second = currentLoc.second+1; //friendship allows direct access to loc attribute
+        newLoc.second = currentLoc.second+1;
+        plyr->move(newLoc); //friendship allows direct access to move func
     }else if(direction == "south"){
-        plyr->loc.second = currentLoc.second-1;
+        newLoc.second = currentLoc.second-1;
+        plyr->move(newLoc);
     }else if(direction == "east"){
-        plyr->loc.first = currentLoc.first+1;
+        newLoc.first = currentLoc.first+1;
+        plyr->move(newLoc);
     }else if(direction == "west"){
-        plyr->loc.first = currentLoc.first-1;
+        newLoc.first = currentLoc.first-1;
+        plyr->move(newLoc);
     }
 }
