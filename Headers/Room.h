@@ -6,6 +6,8 @@
 #define UNTITLED2_ROOM_H
 #include<string>
 #include "Runnable.h"
+#include "Stage.h"
+#include<vector>
 
 using namespace std;
 

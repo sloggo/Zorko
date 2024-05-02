@@ -2,10 +2,12 @@
 #include "Headers/InputHandler.h"
 //#include "Headers/Room.h"
 #include "Headers/Player.h"
+#include "Headers/DataHandler.h"
 
 //Room currentRoom;
 
-void printInv(const vector<Item>& inv){
+void printInv(vector<Item> inv){
+    bool equipped = false;
     for(Item i: inv){
         cout << i.getName() << endl;
         cout << i.getDescription() << endl;
@@ -25,6 +27,11 @@ int main() {
     plyr->drop(i);
     inv = plyr->getInventory();
     printInv(inv);
+
+    DataHandler d = DataHandler();
+    vector<Room> data = d.importRoomData();
+
+    data[0].run();
 
     return 0;
 }

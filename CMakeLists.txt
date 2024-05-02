@@ -23,4 +23,9 @@ add_executable(untitled2 main.cpp
         Classes/Weapon.cpp
         Classes/Item.cpp
         Classes/Battlable.cpp
+        Headers/DataHandler.h
+        Classes/DataHandler.cpp
+        Classes/Stage.cpp
+        Classes/Room.cpp
+        Classes/Runnable.cpp
 )

@@ -1,0 +1,51 @@
+[
+  {
+    "id": 0,
+    "x": 0,
+    "y": 0,
+    "stages": [
+      {
+        "id": 0,
+        "type": "text",
+        "text": "Welcome to Zorko!"
+      },
+      {
+        "id": 1,
+        "type": "text",
+        "text": "You have arrived in a mysterious place, surrounded by nothing but an abandoned old shack infront of you."
+      },
+      {
+        "id": 2,
+        "type": "move",
+        "text": "Enter 'go north' to approach the shack."
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "x": 0,
+    "y": 1,
+    "stages": [
+      {
+        "id": 3,
+        "type": "text",
+        "text": "You approach the shack."
+      },
+      {
+        "id": 4,
+        "type": "text",
+        "text":"In front of you lays a disbanded old white shack. It looms over you."
+      },
+      {
+        "id": 5,
+        "type": "text",
+        "text": "Laying in front of the shack is a rusted old sword, belonging to someone long, long ago."
+      },
+      {
+        "id": 6,
+        "type": "item",
+        "text": "Pick up the sword?"
+      }
+    ]
+  }
+]

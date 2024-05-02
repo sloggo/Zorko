@@ -13,8 +13,9 @@ class Stage : public Runnable{
 private:
     int id;
     string text;
+    string type;
 public:
-    Stage(int, string);
+    Stage(int, string, string);
     void run() override;
 };
 
