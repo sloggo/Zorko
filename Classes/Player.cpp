@@ -52,3 +52,10 @@ void Player::drop(Item dropping) {
     }
 }
 
+void Player::showInventory() {
+    for(Item i: inventory){
+        cout << i.getName() << endl;
+        cout << i.getDescription() << endl;
+        cout << "-------" << endl;
+    }
+}

@@ -39,7 +39,10 @@ void InputHandler::processInput(string inputWords, string type, int id) {
 
     processedInput = words;
 
-    if(type == "move"){
+    if((processedInput[0] == "show" && processedInput[1] == "inventory") || processedInput[0] == "inventory"){
+        Player* plyr = Player::getInstance();
+        plyr->showInventory();
+    }else if(type == "move"){
         processMovement();
     } else if(type == "item"){
         processPickup(id);

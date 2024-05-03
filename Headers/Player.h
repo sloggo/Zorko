@@ -27,6 +27,7 @@ public:
 
     pair<int,int> getLoc();
     vector<Item> getInventory();
+    void showInventory();
 
     void pickup(Item);
     void drop(Item);
