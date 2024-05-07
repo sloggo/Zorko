@@ -15,6 +15,7 @@ private:
 public:
     Weapon(int,string,string,int,int);
     void use() override;
+    int getDmg();
 };
 
 #endif //UNTITLED2_WEAPON_H

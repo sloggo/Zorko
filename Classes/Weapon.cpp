@@ -15,3 +15,7 @@ Weapon::Weapon(int id, string nameI, string descI, int damage, int dur) : Item(s
 void Weapon::use() {
     cout << "Attacked!" << endl;
 }
+
+int Weapon::getDmg(){
+    return dmg;
+}

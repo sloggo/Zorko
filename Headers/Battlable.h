@@ -12,14 +12,16 @@ class Battlable{
 private:
     int hp;
     Weapon weapon;
+    bool blocked;
 protected:
     Battlable(Weapon);
 
 public:
     void takeDmg(int);
     void heal(int);
-    void attack();
+    void attack(Battlable* target);
     void block();
+    int getHp();
 };
 
 #endif //UNTITLED2_BATTLABLE_H

@@ -44,7 +44,34 @@
       {
         "id": 6,
         "type": "item",
-        "text": "Pick up the sword?"
+        "text": "Enter 'pickup' to pick up the item."
+      },
+      {
+        "id": 7,
+        "type": "move",
+        "text": "Enter 'go north' to enter the shack."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "x": 0,
+    "y": 2,
+    "stages": [
+      {
+        "id": 8,
+        "type": "battle",
+        "text": "As you enter the shack, the floorboards begin to rumble and an undead creature bursts out from under the floor."
+      },
+      {
+        "id": 9,
+        "type": "item",
+        "text": "Ironically, as the undead creature dies, he leaves behind a potion, pickup?"
+      },
+      {
+        "id": 10,
+        "type": "move",
+        "text": "As you gather your surroundings, you realise the room has 4 staircases down below one in each wall of the room."
       }
     ]
   }

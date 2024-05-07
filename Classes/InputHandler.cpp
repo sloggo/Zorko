@@ -26,6 +26,11 @@ void InputHandler::takeInInput(string type, int stageId) {
     processInput(input, type, stageId);
 }
 
+string InputHandler::takeInInput(string type) {
+    string input;
+    getline(cin, input);
+    return input;
+}
 
 void InputHandler::processInput(string inputWords, string type, int id) {
     stringstream ss(inputWords);

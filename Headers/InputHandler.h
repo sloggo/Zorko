@@ -20,6 +20,7 @@ public:
     static InputHandler* getInstance();
 
     void takeInInput(string, int);
+    string takeInInput(string);
     void processInput(string, string, int);
 
     vector<string> getProcessedInput();

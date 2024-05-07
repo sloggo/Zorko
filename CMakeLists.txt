@@ -32,4 +32,9 @@ add_executable(untitled2 main.cpp
         utils.h
         Headers/GameState.h
         Classes/GameState.cpp
+        Headers/Potion.h
+        Classes/Potion.cpp
+        Classes/Enemy.cpp
+        Headers/BattleHandler.h
+        Classes/BattleHandler.cpp
 )

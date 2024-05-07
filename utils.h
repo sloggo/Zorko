@@ -10,5 +10,7 @@
 
 Item getItemFromId(int id);
 Room getRoomFromLocation(pair<int,int>);
+Enemy* getEnemyFromId(int id);
+
 
 #endif //UNTITLED2_UTILS_H

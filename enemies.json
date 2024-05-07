@@ -1,0 +1,32 @@
+[
+  {
+    "id": 8,
+    "name": "Undead Creature",
+    "attack_dialog": [
+      "Uaaaghhhhh!",
+      "*groans angrily*",
+      "Thissss isss fooooorrrr theee emmmporrrerrrrr...",
+      "Gettttt outtttt offf hereeeeeee...",
+      "Punyyyyy mortalllll....."
+    ],
+    "hurt_dialog": [
+      "Ooof!",
+      "*groans in pain*",
+      "I wonttt lett this slideeee....",
+      "Ouch!",
+      "Wait tilllll the emporerrrrrr hears about this...."
+    ],
+    "death_dialog": [
+      "Nooooooo!!!",
+      "You may have beaten me, but you wont survive here puny mortal..."
+    ],
+    "weapon": {
+      "id": 999,
+      "type": "weapon",
+      "name": "Undead Sword",
+      "description": "Sword used by undead mobs.",
+      "dmg": 0.5,
+      "durability": 100
+    }
+  }
+]

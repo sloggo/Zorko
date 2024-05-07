@@ -24,3 +24,13 @@ Room getRoomFromLocation(pair<int,int> loc){
     }
     return rooms[0];
 }
+
+vector<Enemy> enemies = DataHandler::importEnemyData();
+Enemy* getEnemyFromId(int id){
+    for(Enemy i: enemies){
+        if(i.getId() == id){
+            return &i;
+        }
+    }
+    return &enemies[0];
+}

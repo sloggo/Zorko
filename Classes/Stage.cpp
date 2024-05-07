@@ -4,6 +4,8 @@
 #include "../Headers/Stage.h"
 #include<iostream>
 #include"../Headers/InputHandler.h"
+#include"../Headers/BattleHandler.h"
+#include "../utils.h"
 using namespace std;
 
 Stage::Stage(int idI, std::string textI, std::string typeI) : Runnable() {
@@ -19,6 +21,10 @@ void Stage::run() {
     // type execution
     if(type == "item"){
         i->takeInInput(type, id);
+    }else if(type == "battle"){
+        Enemy* enemy = getEnemyFromId(id);
+        BattleHandler handler = BattleHandler(id, enemy);
+        handler.battleRound();
     }else if(type != "text"){
         i->takeInInput(type, id);
     }

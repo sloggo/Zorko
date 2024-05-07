@@ -9,7 +9,7 @@
   },
 
   {
-    "id": 8,
+    "id": 9,
     "name": "Health Potion",
     "type": "heal",
     "description": "A potion that restores 50hp",
