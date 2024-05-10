@@ -18,6 +18,10 @@ void Observer::update(pair<int, int>) {
     cout << "observer base called" << endl;
 }
 
+void Observer::update(int) {
+    cout << "observer base called" << endl;
+}
+
 void Observer::addToPlayer() {
     Player* plyr = Player::getInstance();
     plyr->addObserver(this);

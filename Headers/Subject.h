@@ -16,6 +16,7 @@ public:
     void addObserver(Observer*);
     void removeObserver(Observer*);
     void update(pair<int,int>);
+    void update(int);
 };
 
 #endif //UNTITLED2_SUBJECT_H

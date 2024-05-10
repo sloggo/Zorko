@@ -24,3 +24,8 @@ void Subject::update(pair<int,int> loc){
         o->update(loc);
     }
 }
+void Subject::update(int loc){
+    for(Observer* o: observers){
+        o->update(loc);
+    }
+}

@@ -13,15 +13,15 @@ class InputHandler{
 private:
     static InputHandler* instance; // Singleton
     vector<string> processedInput;
-    void processMovement();
+    bool processMovement();
 public:
     static void forceInput(string); // for ui in future
 
     static InputHandler* getInstance();
 
-    void takeInInput(string, int);
+    bool takeInInput(string, int);
     string takeInInput(string);
-    void processInput(string, string, int);
+    bool processInput(string, string, int);
 
     vector<string> getProcessedInput();
     void processPickup(int);

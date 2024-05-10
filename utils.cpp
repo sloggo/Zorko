@@ -15,10 +15,10 @@ Item getItemFromId(int id){
     return items[0];
 }
 
-vector<Room> rooms = DataHandler::importRoomData();
-Room getRoomFromLocation(pair<int,int> loc){
-    for(Room room: rooms){
-        if(room.getLoc().first == loc.first && room.getLoc().second == loc.second){
+vector<Room*> rooms = DataHandler::importRoomData();
+Room* getRoomFromLocation(pair<int,int> loc){
+    for(Room* room: rooms){
+        if(room->getLoc().first == loc.first && room->getLoc().second == loc.second){
             return room;
         }
     }
@@ -34,5 +34,10 @@ Enemy* getEnemyFromId(int id) {
         }
     }
     return &enemies[0];
+}
+
+Stage* getStage(pair<int,int> room, int stage){
+    Room* roomIsIn = getRoomFromLocation(room);
+    return &(roomIsIn->getStages()[stage]);
 }
 

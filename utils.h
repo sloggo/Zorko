@@ -9,8 +9,9 @@
 #include "Headers/DataHandler.h"
 
 Item getItemFromId(int id);
-Room getRoomFromLocation(pair<int,int>);
+Room* getRoomFromLocation(pair<int,int>);
 Enemy* getEnemyFromId(int id);
+Stage* getStage(pair<int,int>, int);
 
 
 #endif //UNTITLED2_UTILS_H

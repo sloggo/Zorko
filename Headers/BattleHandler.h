@@ -14,7 +14,7 @@ private:
 public:
     BattleHandler(int, Enemy*);
     void battleLoop();
-    void battleRound();
+    bool battleRound();
 };
 
 #endif //UNTITLED2_BATTLEHANDLER_H

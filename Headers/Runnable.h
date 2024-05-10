@@ -10,6 +10,7 @@ using namespace std;
 class Runnable{
 public:
     virtual void run();
+    virtual bool runStage();
 };
 
 #endif //UNTITLED2_RUNNABLE_H

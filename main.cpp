@@ -18,10 +18,12 @@ void printInv(vector<Item> inv){
 int main() {
     GameState state = GameState();
     state.addToPlayer();
+    state.update(make_pair(0,0));
+    state.update(0);
 
     while(true){
-        Room current = state.getCurrentRoom();
-        current.run();
+        Room* current = state.getCurrentRoom();
+        current->run();
     }
     return 0;
 }

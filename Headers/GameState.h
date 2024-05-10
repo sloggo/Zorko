@@ -7,14 +7,17 @@
 
 #include "Room.h"
 #include "Observer.h"
+#include "../utils.h"
 
 class GameState : public Observer{
 private:
-    Room currentRoom;
+    Room* currentRoom;
+    Stage* currentStage;
 public:
     GameState();
-    Room getCurrentRoom();
+    Room* getCurrentRoom();
     void update(pair<int,int>) override;
+    void update(int) override;
 };
 
 #endif //UNTITLED2_GAMESTATE_H

@@ -13,7 +13,7 @@ BattleHandler::BattleHandler(int roomIdI, Enemy* enemyI) : roomId(roomIdI), enem
     cout << "Battle Started!" << endl;
 }
 
-void BattleHandler::battleRound() {
+bool BattleHandler::battleRound() {
     // let player go first
     InputHandler* input = InputHandler::getInstance();
     Player* plyr = Player::getInstance();
@@ -24,8 +24,8 @@ void BattleHandler::battleRound() {
         cout << "" << endl;
         cout << "Round: " << round << endl;
         cout << "-------------------------" << endl;
-        cout << "Player - " << plyr->getHp();
-        cout << " Enemy - " << this->enemy->getHp() << endl;
+        cout << "Player - " << plyr->getHp() << " ";
+        cout << "| Enemy - " << this->enemy->getHp() << endl;
         bool validInput = false;
         while(!validInput){
             string userInput = input->takeInInput("battle");
@@ -63,8 +63,10 @@ void BattleHandler::battleRound() {
 
     if(plyr->getHp() <= 0){
         cout << "You died!" << endl;
+        return false;
     } else{
         delete enemy;
         cout << "You defeated " << enemyName << "!" << endl;
+        return true;
     }
 }

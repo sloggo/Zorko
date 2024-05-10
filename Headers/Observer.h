@@ -22,6 +22,7 @@ public:
     }
     bool equals(Observer) const;
     void addToPlayer();
+    virtual void update(int); // update stage
 };
 
 #endif //UNTITLED2_OBSERVER_H

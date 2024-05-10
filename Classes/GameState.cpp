@@ -6,13 +6,18 @@
 #include "../utils.h"
 #include "../Headers/Player.h"
 
-GameState::GameState() : Observer(0), currentRoom(getRoomFromLocation(make_pair(0,0)))  {
+GameState::GameState() : Observer(0), currentRoom(nullptr), currentStage(nullptr)  {
 }
 
-Room GameState::getCurrentRoom() {
+
+Room* GameState::getCurrentRoom() {
     return currentRoom;
 }
 
 void GameState::update(pair<int, int> loc) {
     currentRoom = getRoomFromLocation(loc);
+}
+
+void GameState::update(int loc) {
+    currentStage = getStage(currentRoom->getLoc(),loc);
 }

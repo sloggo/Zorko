@@ -12,7 +12,7 @@ using namespace std;
 
 class DataHandler{
 public:
-    static vector<Room> importRoomData();
+    static vector<Room*> importRoomData();
     static vector<Item> importItemData();
     static vector<Enemy> importEnemyData();
 

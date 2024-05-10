@@ -14,18 +14,22 @@ Stage::Stage(int idI, std::string textI, std::string typeI) : Runnable() {
     type = typeI;
 }
 
-void Stage::run() {
+bool Stage::runStage() {
     cout << text << endl;
     InputHandler* i = InputHandler::getInstance();
+    if(type == "text"){
+        return true;
+    }
 
     // type execution
     if(type == "item"){
-        i->takeInInput(type, id);
+        return i->takeInInput(type, id);
     }else if(type == "battle"){
         Enemy* enemy = getEnemyFromId(id);
         BattleHandler handler = BattleHandler(id, enemy);
-        handler.battleRound();
+        return handler.battleRound();
     }else if(type != "text"){
-        i->takeInInput(type, id);
+        return i->takeInInput(type, id);
     }
+    return false;
 }

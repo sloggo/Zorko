@@ -14,7 +14,7 @@
 using namespace std;
 using json = nlohmann::json; // Alias for nlohmann::json
 
-vector<Room> DataHandler::importRoomData() {
+vector<Room*> DataHandler::importRoomData() {
     ifstream file("../rooms.json");
 
     if (!file.is_open()) {
@@ -27,7 +27,7 @@ vector<Room> DataHandler::importRoomData() {
     file >> jsonData;
     file.close();
 
-    vector<Room> rooms;
+    vector<Room*> rooms;
 
     for (json::iterator room = jsonData.begin(); room != jsonData.end(); ++room) {
         // Each room
@@ -39,7 +39,7 @@ vector<Room> DataHandler::importRoomData() {
             stages.push_back(newStg);
         }
 
-        Room newRoom = Room((*room)["id"], stages, make_pair((*room)["x"], (*room)["y"]));
+        Room* newRoom = new Room((*room)["id"], stages, make_pair((*room)["x"], (*room)["y"]));
         rooms.push_back(newRoom);
     }
 

@@ -6,3 +6,6 @@
 void Runnable::run() {
 
 }
+bool Runnable::runStage() {
+
+}

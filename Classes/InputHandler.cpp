@@ -20,10 +20,10 @@ InputHandler* InputHandler::getInstance() {
     return instance;
 }
 
-void InputHandler::takeInInput(string type, int stageId) {
+bool InputHandler::takeInInput(string type, int stageId) {
     string input;
     getline(cin, input);
-    processInput(input, type, stageId);
+    return processInput(input, type, stageId);
 }
 
 string InputHandler::takeInInput(string type) {
@@ -32,7 +32,7 @@ string InputHandler::takeInInput(string type) {
     return input;
 }
 
-void InputHandler::processInput(string inputWords, string type, int id) {
+bool InputHandler::processInput(string inputWords, string type, int id) {
     stringstream ss(inputWords);
 
     vector<string> words;
@@ -47,21 +47,25 @@ void InputHandler::processInput(string inputWords, string type, int id) {
     if((processedInput[0] == "show" && processedInput[1] == "inventory") || processedInput[0] == "inventory"){
         Player* plyr = Player::getInstance();
         plyr->showInventory();
+        return false;
     }else if(type == "move"){
-        processMovement();
+        return processMovement();
     } else if(type == "item"){
         processPickup(id);
+        return true;
     }
+    return false;
 }
 
 vector<string> InputHandler::getProcessedInput() {
     return processedInput;
 }
 
-void InputHandler::processMovement(){
+bool InputHandler::processMovement(){
     if(processedInput[0] != "go"){
         cout << "Invalid input!" << endl;
         takeInInput("move", 0);
+        return false;
     }
 
     Player* plyr = Player::getInstance();
@@ -72,16 +76,21 @@ void InputHandler::processMovement(){
     if(direction == "north"){
         newLoc.second = currentLoc.second+1;
         plyr->move(newLoc); //friendship allows direct access to move func
+        return true;
     }else if(direction == "south"){
         newLoc.second = currentLoc.second-1;
         plyr->move(newLoc);
+        return true;
     }else if(direction == "east"){
         newLoc.first = currentLoc.first+1;
         plyr->move(newLoc);
+        return true;
     }else if(direction == "west"){
         newLoc.first = currentLoc.first-1;
         plyr->move(newLoc);
+        return true;
     }
+    return false;
 }
 
 void InputHandler::processPickup(int id){

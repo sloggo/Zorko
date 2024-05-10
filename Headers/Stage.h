@@ -17,7 +17,7 @@ private:
     string type;
 public:
     Stage(int, string, string);
-    void run() override;
+    bool runStage() override;
 };
 
 #endif //UNTITLED2_STAGE_H

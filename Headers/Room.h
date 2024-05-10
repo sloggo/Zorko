@@ -20,6 +20,9 @@ public:
     Room(int, vector<Stage>, pair<int,int>);
     void run() override;
     pair<int,int> getLoc();
+    vector<Stage> getStages();
+
+    int counter;
 };
 
 #endif //UNTITLED2_ROOM_H

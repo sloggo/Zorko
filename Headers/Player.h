@@ -20,6 +20,7 @@ private:
     static Player* instance;
     vector<Item> inventory;
     pair<int,int> loc;
+    int stageIndex;
     void move(pair<int,int>); // CALL UPDATE
 public:
     static Player* getInstance();
