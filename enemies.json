@@ -25,7 +25,7 @@
       "type": "weapon",
       "name": "Undead Sword",
       "description": "Sword used by undead mobs.",
-      "dmg": 0.5,
+      "dmg": 1,
       "durability": 100
     }
   }

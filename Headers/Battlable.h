@@ -9,11 +9,10 @@
 using namespace std;
 
 class Battlable{
-private:
+protected:
     int hp;
     Weapon weapon;
     bool blocked;
-protected:
     Battlable(Weapon);
 
 public:
@@ -22,6 +21,7 @@ public:
     void attack(Battlable* target);
     void block();
     int getHp();
+    bool isBlocked();
 };
 
 #endif //UNTITLED2_BATTLABLE_H

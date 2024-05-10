@@ -9,9 +9,7 @@
 
 using namespace std;
 
-BattleHandler::BattleHandler(int roomIdI, Enemy* enemyI) {
-    roomId = roomIdI;
-    enemy = enemyI;
+BattleHandler::BattleHandler(int roomIdI, Enemy* enemyI) : roomId(roomIdI), enemy(enemyI) {
     cout << "Battle Started!" << endl;
 }
 
@@ -25,7 +23,7 @@ void BattleHandler::battleRound() {
         cout << "Round: " << round << endl;
         cout << "-------------------------" << endl;
         cout << "Player - " << plyr->getHp();
-        cout << " Enemy - " << enemy->getHp() << endl;
+        cout << " Enemy - " << this->enemy->getHp() << endl;
         string userInput = input->takeInInput("battle");
         bool validInput = false;
         while(!validInput){
@@ -42,15 +40,20 @@ void BattleHandler::battleRound() {
             }
         }
 
-        if(enemy && enemy->getHp() > 0) { // Check if enemy is not null
-            double randNum = ((double) rand() / (RAND_MAX)) + 1;
+        if(enemy->getHp() > 0) {
+            std::random_device rd;
+            std::mt19937 gen(rd());
+
+            std::uniform_real_distribution<double> dis(0.0, 1.0);
+            double randNum = dis(gen);
+            cout << randNum;
             if(randNum <= 0.25){
+                cout << "Enemy Blocks"<< endl;
                 enemy->block();
             } else {
+                cout << "Enemy attacks!" << endl;
                 enemy->attack(plyr);
             }
-        } else {
-            delete enemy;
         }
         round++;
     }
@@ -58,6 +61,8 @@ void BattleHandler::battleRound() {
     if(plyr->getHp() <= 0){
         cout << "You died!" << endl;
     } else{
-        cout << "You defeated " + enemy->getName() + "!" << endl;
+        string name = enemy->getName();
+        delete enemy;
+        cout << "You defeated " << enemy->getName() << "!" << endl;
     }
 }

@@ -2,10 +2,11 @@
 // Created by Josh Sloggett on 02/05/2024.
 //
 #include "../Headers/Battlable.h"
+#include<iostream>
 
-Battlable::Battlable(Weapon w) : weapon(w) {
-    hp = 100;
-    blocked = false;
+using namespace std;
+
+Battlable::Battlable(Weapon w) : weapon(w), hp(100), blocked(false) {
 }
 
 void Battlable::block() {
@@ -21,7 +22,11 @@ void Battlable::heal(int hpUp) {
 }
 
 void Battlable::takeDmg(int dmg) {
-    hp -= dmg;
+    if(hp-dmg <= 0){
+        hp = 0;
+    } else{
+        hp -= dmg;
+    }
 }
 
 void Battlable::attack(Battlable* target) {
@@ -33,5 +38,9 @@ void Battlable::attack(Battlable* target) {
 }
 
 int Battlable::getHp() {
-    return hp;
+    return this->hp;
+}
+
+bool Battlable::isBlocked() {
+    return blocked;
 }
