@@ -48,11 +48,16 @@ bool InputHandler::processInput(string inputWords, string type, int id) {
         Player* plyr = Player::getInstance();
         plyr->showInventory();
         return false;
-    }else if(type == "move"){
-        return processMovement();
-    } else if(type == "item"){
-        processPickup(id);
-        return true;
+    }else if(processedInput[0] == "go"){
+        return processMovement(type);
+    } else if(processedInput[0] == "pickup"){
+        if(type == "item"){
+            processPickup(id);
+            return true;
+        } else{
+            cout << "There's nothing to pickup!" << endl;
+            return false;
+        }
     }
     return false;
 }
@@ -61,7 +66,7 @@ vector<string> InputHandler::getProcessedInput() {
     return processedInput;
 }
 
-bool InputHandler::processMovement(){
+bool InputHandler::processMovement(string type){
     if(processedInput[0] != "go"){
         cout << "Invalid input!" << endl;
         takeInInput("move", 0);
@@ -77,25 +82,49 @@ bool InputHandler::processMovement(){
         newLoc.second = currentLoc.second+1;
         if(getRoomFromLocation(newLoc) != nullptr){
             plyr->move(newLoc); //friendship allows direct access to move func
-            return true;
+            if(type == "move"){
+                return true;
+            }else{
+                return false;
+            }
+        } else{
+            cout << "Invalid move location; no room!" << endl;
         }
     }else if(direction == "south"){
         newLoc.second = currentLoc.second-1;
         if(getRoomFromLocation(newLoc) != nullptr){
             plyr->move(newLoc);
-            return true;
+            if(type == "move"){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            cout << "Invalid move location; no room!" << endl;
         }
     }else if(direction == "east"){
         newLoc.first = currentLoc.first+1;
         if(getRoomFromLocation(newLoc) != nullptr){
             plyr->move(newLoc);
-            return true;
+            if(type == "move"){
+                return true;
+            } else{
+                return false;
+            }
+        }else{
+            cout << "Invalid move location; no room!" << endl;
         }
     }else if(direction == "west"){
         newLoc.first = currentLoc.first-1;
         if(getRoomFromLocation(newLoc) != nullptr) {
             plyr->move(newLoc);
-            return true;
+            if(type == "move"){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            cout << "Invalid move location; no room!" << endl;
         }
     }
     return false;
