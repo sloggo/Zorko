@@ -21,7 +21,7 @@ void Room::run()  {
     Player* plyr = Player::getInstance();
     if(!completed){
         for(counter; counter<stages.size()-1; counter++){
-            cout << counter << "-" << stages.size()<< endl;
+            //cout << counter << "-" << stages.size()<< endl; debug
             plyr->update(counter);
             bool complete = false;
             while(!complete){

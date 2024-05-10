@@ -75,20 +75,28 @@ bool InputHandler::processMovement(){
 
     if(direction == "north"){
         newLoc.second = currentLoc.second+1;
-        plyr->move(newLoc); //friendship allows direct access to move func
-        return true;
+        if(getRoomFromLocation(newLoc) != nullptr){
+            plyr->move(newLoc); //friendship allows direct access to move func
+            return true;
+        }
     }else if(direction == "south"){
         newLoc.second = currentLoc.second-1;
-        plyr->move(newLoc);
-        return true;
+        if(getRoomFromLocation(newLoc) != nullptr){
+            plyr->move(newLoc);
+            return true;
+        }
     }else if(direction == "east"){
         newLoc.first = currentLoc.first+1;
-        plyr->move(newLoc);
-        return true;
+        if(getRoomFromLocation(newLoc) != nullptr){
+            plyr->move(newLoc);
+            return true;
+        }
     }else if(direction == "west"){
         newLoc.first = currentLoc.first-1;
-        plyr->move(newLoc);
-        return true;
+        if(getRoomFromLocation(newLoc) != nullptr) {
+            plyr->move(newLoc);
+            return true;
+        }
     }
     return false;
 }

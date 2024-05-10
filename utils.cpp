@@ -22,7 +22,7 @@ Room* getRoomFromLocation(pair<int,int> loc){
             return room;
         }
     }
-    return rooms[0];
+    return nullptr;
 }
 
 vector<Enemy> enemies = DataHandler::importEnemyData();
@@ -33,7 +33,7 @@ Enemy* getEnemyFromId(int id) {
             return &enemy;
         }
     }
-    return &enemies[0];
+    return nullptr;
 }
 
 Stage* getStage(pair<int,int> room, int stage){
