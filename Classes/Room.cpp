@@ -10,6 +10,7 @@
 
 
 Room::Room(int idI, vector<Stage> stgs, pair<int, int> loc) : Runnable() {
+    completed = false;
     id=idI;
     stages=std::move(stgs);
     location=loc;
@@ -18,12 +19,23 @@ Room::Room(int idI, vector<Stage> stgs, pair<int, int> loc) : Runnable() {
 
 void Room::run()  {
     Player* plyr = Player::getInstance();
-    for(counter; counter<stages.size(); counter++){
-        cout << counter << endl;
-        plyr->update(counter);
+    if(!completed){
+        for(counter; counter<stages.size()-1; counter++){
+            cout << counter << "-" << stages.size()<< endl;
+            plyr->update(counter);
+            bool complete = false;
+            while(!complete){
+                complete = stages[counter].runStage();
+                if(complete){
+                    continue;
+                }
+            }
+        }
+        completed = true;
+    } else{
         bool complete = false;
         while(!complete){
-            complete = stages[counter].runStage();
+            complete = stages[stages.size()-1].runStage();
             if(complete){
                 continue;
             }

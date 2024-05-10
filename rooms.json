@@ -18,6 +18,11 @@
         "id": 2,
         "type": "move",
         "text": "Enter 'go north' to approach the shack."
+      },
+      {
+        "id": -1,
+        "type": "move",
+        "text": "Seems like so long ago we arrived here."
       }
     ]
   },
@@ -50,6 +55,11 @@
         "id": 7,
         "type": "move",
         "text": "Enter 'go north' to enter the shack."
+      },
+      {
+        "id": -2,
+        "type": "move",
+        "text": "You return to the shack, there's not much to see here."
       }
     ]
   },
@@ -72,6 +82,11 @@
         "id": 10,
         "type": "move",
         "text": "As you gather your surroundings, you realise the room has 4 staircases down below one in each wall of the room."
+      },
+      {
+        "id": -3,
+        "type": "move",
+        "text": "You return to the 4 way staircase."
       }
     ]
   }

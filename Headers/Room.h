@@ -13,6 +13,7 @@ using namespace std;
 
 class Room : public Runnable{
 private:
+    bool completed;
     int id;
     vector<Stage> stages;
     pair<int,int> location;
