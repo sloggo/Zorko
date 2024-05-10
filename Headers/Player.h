@@ -24,6 +24,9 @@ private:
 public:
     static Player* getInstance();
     explicit Player(Weapon);
+    void attack(Battlable*) override;
+    void takeDmg(int) override;
+    void block() override;
 
     pair<int,int> getLoc();
     vector<Item> getInventory();

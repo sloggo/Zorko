@@ -12,14 +12,15 @@ class Battlable{
 protected:
     int hp;
     Weapon weapon;
-    bool blocked;
+
     Battlable(Weapon);
 
+    bool blocked;
 public:
-    void takeDmg(int);
+    virtual void takeDmg(int);
     void heal(int);
-    void attack(Battlable* target);
-    void block();
+    virtual void attack(Battlable* target);
+    virtual void block();
     int getHp();
     bool isBlocked();
 };

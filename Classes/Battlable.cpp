@@ -12,6 +12,7 @@ Battlable::Battlable(Weapon w) : weapon(w), hp(100), blocked(false) {
 void Battlable::block() {
     if(blocked){
         blocked = false;
+        cout << "Block has been broken!" << endl;
     } else{
         blocked = true;
     }
@@ -19,6 +20,7 @@ void Battlable::block() {
 
 void Battlable::heal(int hpUp) {
     hp += hpUp;
+    cout << "Healed for "<<hpUp<<" hp!" << endl;
 }
 
 void Battlable::takeDmg(int dmg) {
@@ -27,6 +29,7 @@ void Battlable::takeDmg(int dmg) {
     } else{
         hp -= dmg;
     }
+    cout << "Took "<<dmg<<" damage!" << endl;
 }
 
 void Battlable::attack(Battlable* target) {

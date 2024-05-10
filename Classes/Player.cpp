@@ -12,7 +12,7 @@ Player* Player::instance = nullptr;
 
 Player* Player::getInstance() {
     if (instance == nullptr) {
-        Weapon starterWeapon = *new Weapon(0,"Starter Sword", "A sword given to you by your father", 10, 10);
+        Weapon starterWeapon = *new Weapon(0,"Starter Sword", "A sword given to you by your father", 50, 10);
         instance = new Player(starterWeapon); // Allocate memory for the instance
     }
     return instance;
@@ -57,5 +57,34 @@ void Player::showInventory() {
         cout << i.getName() << endl;
         cout << i.getDescription() << endl;
         cout << "-------" << endl;
+    }
+}
+
+void Player::attack(Battlable *target) {
+    cout << "Player attacks for "<< weapon.getDmg()<< "!"<<endl;
+    if(!target->isBlocked()){
+        target->takeDmg(weapon.getDmg());
+    } else{
+        cout<< "Enemy blocked your attack!" << endl;
+        target->block();
+    }
+}
+
+void Player::takeDmg(int dmg) {
+    if(hp-dmg <= 0){
+        hp = 0;
+    } else{
+        hp -= dmg;
+    }
+    cout << "You took "<<dmg<<" damage!" << endl;
+}
+
+void Player::block() {
+    if(blocked){
+        blocked = false;
+        cout << "Your block has been broken!" << endl;
+    } else{
+        blocked = true;
+        cout << "You blocked!" << endl;
     }
 }

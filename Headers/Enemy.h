@@ -21,6 +21,11 @@ public:
     ~Enemy();
     int getId();
     string getName();
+    void attack(Battlable*) override;
+    void takeDmg(int) override;
+    string getRandomAttackDialog();
+    string getRandomHurtDialog();
+    string getRandomDeathDialog();
 };
 
 #endif //UNTITLED2_ENEMY_H
