@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="rooms.json">/Users/joshsloggett/Zorko2/rooms.json</file>
+</qresource>
+</RCC>

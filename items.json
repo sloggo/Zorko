@@ -4,7 +4,7 @@
     "type": "weapon",
     "name": "Rusted Sword",
     "description": "Old rusted sword",
-    "dmg": 1,
+    "dmg": 30,
     "durability": 5
   },
 
@@ -14,6 +14,23 @@
     "type": "heal",
     "description": "A potion that restores 50hp",
     "hp": 50
+  },
+
+  {
+    "id": 13,
+    "type": "weapon",
+    "name": "Mummy's Tomb Sword",
+    "description": "A sword made from the bones of an old mummy.",
+    "dmg": 35,
+    "durability": 5
+  },
+
+  {
+    "id": 16,
+    "type": "heal",
+    "name": "Mummy's Blood",
+    "description": "A vial of blood that restores 25 hp.",
+    "hp": 25
   }
 
 ]

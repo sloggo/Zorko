@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1111</width>
+    <height>669</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>360</y>
+      <width>281</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Continue</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="northBut">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>70</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>North</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="southBut">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>240</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>South</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="eastBut">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>150</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>East</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="westBut">
+    <property name="geometry">
+     <rect>
+      <x>990</x>
+      <y>150</y>
+      <width>81</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>West</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>410</y>
+      <width>651</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>741</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>440</y>
+      <width>741</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>Item Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Item Description</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="attackBut">
+    <property name="geometry">
+     <rect>
+      <x>849</x>
+      <y>90</y>
+      <width>181</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Attack</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="blockBut">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>190</y>
+      <width>181</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Block</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="HealthBar">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>30</y>
+      <width>118</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>20</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Health</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1111</width>
+     <height>43</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -89,5 +89,59 @@
         "text": "You return to the 4 way staircase."
       }
     ]
+  },
+  {
+    "id": 2,
+    "x": 1,
+    "y": 2,
+    "stages": [
+      {
+        "id": 11,
+        "type": "text",
+        "text": "The left staircase leads tou below to a tomb occupied by the undead creature you just defeated."
+      },
+      {
+        "id": 13,
+        "type": "item",
+        "text": "You see a new weapon laying on the floor. You continue to pick it up."
+      },
+      {
+        "id": 12,
+        "type": "move",
+        "text": "You gather your surroundings, but it's a dead end."
+      },
+      {
+        "id": -4,
+        "type": "move",
+        "text": "You return to the mummy's tomb but there's nowhere to go."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "x": -1,
+    "y": 2,
+    "stages": [
+      {
+        "id": 14,
+        "type": "text",
+        "text": "The right staircase leads tou below to a dirty science lab with equipment, paperwork and vials of various liquids scattered all over the floor."
+      },
+      {
+        "id": 16,
+        "type": "item",
+        "text": "You see a potion-like object laying on the floor. You continue to pick it up."
+      },
+      {
+        "id": 17,
+        "type": "move",
+        "text": "You look at the wall, it's a dead end."
+      },
+      {
+        "id": -5,
+        "type": "move",
+        "text": "You re-enter the science lab, but it's a dead end."
+      }
+    ]
   }
 ]

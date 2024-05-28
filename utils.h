@@ -5,10 +5,10 @@
 #ifndef UNTITLED2_UTILS_H
 #define UNTITLED2_UTILS_H
 
-#include "Headers/Item.h"
-#include "Headers/DataHandler.h"
+#include "Item.h"
+#include "DataHandler.h"
 
-Item getItemFromId(int id);
+Item* getItemFromId(int id);
 Room* getRoomFromLocation(pair<int,int>);
 Enemy* getEnemyFromId(int id);
 Stage* getStage(pair<int,int>, int);

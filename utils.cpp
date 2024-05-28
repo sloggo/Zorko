@@ -4,12 +4,12 @@
 
 #include "utils.h"
 
-vector<Item> items = DataHandler::importItemData(); // Definition
+vector<Item*> items = DataHandler::importItemData();
 
-Item getItemFromId(int id){
-    for(Item i: items){
-        if(i.getId() == id){
-            return i;
+Item* getItemFromId(int id){
+    for(Item* i: items){
+        if(i->getId() == id){
+            return i; // copy constructor
         }
     }
     return items[0];
@@ -25,19 +25,20 @@ Room* getRoomFromLocation(pair<int,int> loc){
     return nullptr;
 }
 
-vector<Enemy> enemies = DataHandler::importEnemyData();
+vector<Enemy*> enemies = DataHandler::importEnemyData();
 Enemy* getEnemyFromId(int id) {
     vector<Enemy*> foundEnemies;
-    for (Enemy& enemy : enemies) {
-        if (enemy.getId() == id) {
-            return &enemy;
+    for (Enemy* enemy : enemies) {
+        if (enemy->getId() == id) {
+            return new Enemy(*enemy);
         }
     }
     return nullptr;
 }
 
-Stage* getStage(pair<int,int> room, int stage){
+Stage* getStage(pair<int,int> room, int stageIndex){
     Room* roomIsIn = getRoomFromLocation(room);
-    return &(roomIsIn->getStages()[stage]);
+    Stage* stage = roomIsIn->getStage(stageIndex);
+    return stage;
 }
 
