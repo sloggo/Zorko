@@ -83,11 +83,6 @@ bool InputHandler::processMovement(string type){
         if(getRoomFromLocation(newLoc) != nullptr){
             plyr->move(newLoc); //friendship allows direct access to move func
             return true;
-//            if(type == "move"){
-//                return true;
-//            }else{
-//                return false;
-//            }
         } else{
             cout << "Invalid move location; no room!" << endl;
         }
@@ -96,11 +91,6 @@ bool InputHandler::processMovement(string type){
         if(getRoomFromLocation(newLoc) != nullptr){
             plyr->move(newLoc);
             return true;
-//            if(type == "move"){
-//                return true;
-//            }else{
-//                return false;
-//            }
         }else{
             cout << "Invalid move location; no room!" << endl;
         }
@@ -109,11 +99,6 @@ bool InputHandler::processMovement(string type){
         if(getRoomFromLocation(newLoc) != nullptr){
             plyr->move(newLoc);
             return true;
-//            if(type == "move"){
-//                return true;
-//            } else{
-//                return false;
-//            }
         }else{
             cout << "Invalid move location; no room!" << endl;
         }

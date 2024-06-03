@@ -7,6 +7,7 @@
 #include<string>
 #include "Battlable.h"
 #include "Weapon.h"
+#include <vector>
 using namespace std;
 
 class Enemy: public Battlable{

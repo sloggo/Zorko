@@ -8,6 +8,7 @@
 #include "BattleHandler.h"
 #include "Player.h"
 #include "Potion.h"
+#include <tuple>
 using namespace std;
 
 extern vector<Room*> rooms;
@@ -20,6 +21,12 @@ MainWindow::MainWindow(QWidget *parent)
     , battleHandler(nullptr)
 {
     ui->setupUi(this);
+    string itms[3] = {"Welcome to Zorko!", "Get a bearing on your controls by viewing the movement panel and continue buttons.", "Down below is your inventory where you can equip or use items!"};
+    for(int i=0; i<3; i++){
+        QListWidgetItem* itm = new QListWidgetItem;
+        itm->setText(QString::fromStdString(itms[i]));
+        ui->listWidget->addItem(itm);
+    }
     // Assuming 'button' is your QPushButton
     connect(ui->pushButton, &QPushButton::released, this, &MainWindow::continueButton);
     connect(ui->northBut, &QPushButton::released, this, &MainWindow::northButton);
@@ -28,13 +35,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->westBut, &QPushButton::released, this, &MainWindow::westButton);
     connect(ui->attackBut, &QPushButton::released, this, &MainWindow::attackButton);
     connect(ui->blockBut, &QPushButton::released, this, &MainWindow::blockButton);
+    ui->listWidget->setWordWrap(true);
 
     state.addObserver(this);
     state.addToPlayer();
     state.update(make_pair(0,0));
     state.update(0);
-    ui->progressBar->setRange(0, state.getCurrentRoom()->getAllStages().size()-2); // Let's say it goes from 0 to 100
-    ui->progressBar->setValue(state.getCurrentRoom()->counter); // With a current value of 10
+    ui->progressBar->setRange(0, state.getCurrentRoom()->getAllStages().size()-2);
+    ui->progressBar->setValue(state.getCurrentRoom()->counter);
     updatePlayerHealth();
     state.runGame();
 }
@@ -50,7 +58,7 @@ void MainWindow::changeText(string input){
 
     if(ui->listWidget->count() == 0){
         ui->listWidget->addItem(item);
-    }else if(ui->listWidget->item(ui->listWidget->currentRow()) && item->text() != ui->listWidget->item(ui->listWidget->currentRow())->text()){
+    }else{
         ui->listWidget->addItem(item);
     }
 
@@ -90,6 +98,7 @@ void MainWindow::updateR(Room* r){
     cout << "update called" << endl;
     r->runUI();
     changeText(r->getCurrentStage()->getText());
+    cout << r->getCurrentStage()->getText() << endl;
 
     if(r->getCurrentStage()->getType() == "battle"){
         setVisibilityBattleUI(true);
@@ -174,7 +183,17 @@ void MainWindow::setVisibilityBattleUI(bool opt){
 }
 
 void MainWindow::attackButton(){
-    vector<string> texts = battleHandler->playerMoveUI("attack");
+    tuple<vector<string>,bool> result = battleHandler->playerMoveUI("attack");
+    vector<string> texts = get<0>(result);
+
+    if(get<1>(result)){
+        state = GameState(false);
+        state.addObserver(this);
+        state.addToPlayer();
+        state.update(make_pair(0,0));
+        state.update(0);
+    }
+
     for(string t: texts){
         changeText(t);
     }
@@ -186,7 +205,15 @@ void MainWindow::attackButton(){
 }
 
 void MainWindow::blockButton(){
-    vector<string> texts = battleHandler->playerMoveUI("block");
+    tuple<vector<string>,bool> result = battleHandler->playerMoveUI("attack");
+    vector<string> texts = get<0>(result);
+    if(get<1>(result)){
+        state = GameState(false);
+        state.addObserver(this);
+        state.addToPlayer();
+        state.update(make_pair(0,0));
+        state.update(0);
+    }
     for(string t: texts){
         changeText(t);
     }

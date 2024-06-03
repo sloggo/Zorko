@@ -18,7 +18,7 @@ DataHandler::LoadStatus DataHandler::loadStatus;
 
 
 vector<Room*> DataHandler::importRoomData() {
-    ifstream file("/Users/joshsloggett/Zorko2/rooms.json");
+    ifstream file("/Users/switc/Documents/GitHub/Zorko/rooms.json");
 
     if (!file.is_open()) {
         cerr << "Error: Unable to open rooms.json" << endl;
@@ -64,7 +64,7 @@ vector<Room*> DataHandler::importRoomData() {
 }
 
 vector<Item*> DataHandler::importItemData(){
-    ifstream file("/Users/joshsloggett/Zorko2/items.json");
+    ifstream file("/Users/switc/Documents/GitHub/Zorko/items.json");
 
     if (!file.is_open()) {
         cerr << "Error: Unable to open items.json" << endl;
@@ -100,7 +100,7 @@ vector<Item*> DataHandler::importItemData(){
 }
 
 vector<Enemy*> DataHandler::importEnemyData(){
-    ifstream file("/Users/joshsloggett/Zorko2/enemies.json");
+    ifstream file("/Users/switc/Documents/GitHub/Zorko/enemies.json");
 
     if (!file.is_open()) {
         cerr << "Error: Unable to open enemies.json" << endl;

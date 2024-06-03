@@ -7,7 +7,7 @@
       {
         "id": 0,
         "type": "text",
-        "text": "Welcome to Zorko!"
+        "text": ""
       },
       {
         "id": 1,
@@ -98,12 +98,12 @@
       {
         "id": 11,
         "type": "text",
-        "text": "The left staircase leads tou below to a tomb occupied by the undead creature you just defeated."
+        "text": "The left staircase leads tou below to a tomb occupied by the undead creature you just defeated. You see a new weapon laying on the floor. You continue to pick it up."
       },
       {
         "id": 13,
         "type": "item",
-        "text": "You see a new weapon laying on the floor. You continue to pick it up."
+        "text": ""
       },
       {
         "id": 12,
@@ -125,12 +125,12 @@
       {
         "id": 14,
         "type": "text",
-        "text": "The right staircase leads tou below to a dirty science lab with equipment, paperwork and vials of various liquids scattered all over the floor."
+        "text": "The right staircase leads tou below to a dirty science lab with equipment, paperwork and vials of various liquids scattered all over the floor. You see a potion-like object laying on the floor. You continue to pick it up."
       },
       {
         "id": 16,
         "type": "item",
-        "text": "You see a potion-like object laying on the floor. You continue to pick it up."
+        "text": ""
       },
       {
         "id": 17,

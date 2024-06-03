@@ -18,7 +18,7 @@ public:
     bool battleRound();
 
     vector<string> initBattleUI();
-    vector<string> playerMoveUI(string);
+    tuple<vector<string>,bool> playerMoveUI(string);
 };
 
 #endif //UNTITLED2_BATTLEHANDLER_H

@@ -17,7 +17,7 @@ private:
         unsigned int itemsLoaded : 1;
         unsigned int enemiesLoaded : 1;
 
-        LoadStatus() : roomsLoaded(0), itemsLoaded(0), enemiesLoaded(0) {} // Initialize all to 0
+        LoadStatus() : roomsLoaded(0), itemsLoaded(0), enemiesLoaded(0) {}
     };
 
     static LoadStatus loadStatus;

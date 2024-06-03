@@ -6,6 +6,7 @@
 #define UNTITLED2_INPUTHANDLER_H
 #include<string>
 #include"Item.h"
+#include <vector>
 
 using namespace std;
 

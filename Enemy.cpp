@@ -53,21 +53,21 @@ void Enemy::takeDmg(int dmg) {
 }
 
 string Enemy::getRandomAttackDialog() {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    std::srand(static_cast<unsigned int>(time(nullptr)));
 
     int randomNumber = std::rand() % attackDialog.size(); // Gives a number between 0 and 10
     return attackDialog[randomNumber];
 }
 
 string Enemy::getRandomHurtDialog() {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    std::srand(static_cast<unsigned int>(time(nullptr)));
 
     int randomNumber = std::rand() % hurtDialog.size(); // Gives a number between 0 and 10
     return hurtDialog[randomNumber];
 }
 
 string Enemy::getRandomDeathDialog() {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    std::srand(static_cast<unsigned int>(time(nullptr)));
 
     int randomNumber = std::rand() % deathDialog.size(); // Gives a number between 0 and 10
     return deathDialog[randomNumber];

@@ -46,33 +46,36 @@ void Room::run()  {
 
 void Room::runUI()  {
     Player* plyr = Player::getInstance();
-    if(!completed){
-        cout << counter << stages.size()-2 << endl;
-        if(stages[counter+1]->getText().find("return") != string::npos){
+    if (!completed) {
+        cout << counter << " " << stages.size() - 2 << endl;
+        if (counter + 1 < stages.size() && stages[counter + 1]->getText().find("return") != string::npos) {
             completed = true;
             cout << completed << endl;
             getStage(counter)->runUI();
-        }else{
+        } else {
             getStage(counter)->runUI();
         }
-    } else{
+    } else {
         cout << "final stage" << endl;
-        getStage(stages.size()-1)->runUI();
+        getStage(stages.size() - 1)->runUI();
     }
 }
 
-void Room::nextStage(){
-    if(getCurrentStage()->getType() == "item"){
+void Room::nextStage() {
+    if (getCurrentStage()->getType() == "item") {
         InputHandler* handler = InputHandler::getInstance();
         handler->processPickup(getCurrentStage()->id);
     }
-    if(getCurrentStage()->id == stages[stages.size()-2]->id){
+
+    if (getCurrentStage()->id == stages[stages.size() - 2]->id) {
         completed = true;
-        counter++;
-    } else if(getCurrentStage()->id != stages[stages.size()-1]->id){
+    }
+
+    if (counter < stages.size() - 1) {
         counter++;
     }
 }
+
 
 pair<int,int> Room::getLoc() {
     return location;

@@ -82,10 +82,11 @@ vector<string> BattleHandler::initBattleUI(){
     return texts;
 }
 
-vector<string> BattleHandler::playerMoveUI(string input){
+tuple<vector<string>, bool> BattleHandler::playerMoveUI(string input){
     Player* plyr = Player::getInstance();
     vector<string> dialog;
     dialog.push_back("");
+    bool died = false;
 
     if(input == "attack"){
         if(enemy->isBlocked()){
@@ -98,7 +99,7 @@ vector<string> BattleHandler::playerMoveUI(string input){
             dialog.push_back(enemy->getName()+": "+enemy->getRandomHurtDialog());
             if(enemy->getHp()<=0){
                 dialog.push_back("You win!");
-                return dialog;
+                return make_tuple(dialog, died);
                 //end?
             }
         }
@@ -128,8 +129,9 @@ vector<string> BattleHandler::playerMoveUI(string input){
             enemy->attack(plyr);
             dialog.push_back(enemy->getName()+": "+enemy->getRandomAttackDialog());
             if(plyr->getHp() <= 0){
-                dialog.push_back("You died!");
-                return dialog;
+                dialog.push_back("GAME OVER! Better luck next time!");
+                died = true;
+                return make_tuple(dialog, died);
             }
         }
     }
@@ -138,5 +140,5 @@ vector<string> BattleHandler::playerMoveUI(string input){
 
     dialog.push_back("Player - "+to_string(plyr->getHp()) + " | "+" Enemy - "+to_string(enemy->getHp()));
 
-    return dialog;
+    return make_tuple(dialog, died);
 }
