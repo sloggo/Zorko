@@ -1,7 +1,7 @@
 //
 // Created by Josh Sloggett on 02/05/2024.
 //
-#include <unistd.h>  // Include the unistd header for getcwd
+#include <unistd.h>
 #include "DataHandler.h"
 #include "json.hpp"
 #include<fstream>
@@ -11,15 +11,18 @@
 #include "Weapon.h"
 #include "Potion.h"
 #include "Enemy.h"
-
+#include "jsonloadexception.h"
 using namespace std;
-using json = nlohmann::json; // Alias for nlohmann::json
+using json = nlohmann::json;
+DataHandler::LoadStatus DataHandler::loadStatus;
+
 
 vector<Room*> DataHandler::importRoomData() {
     ifstream file("/Users/joshsloggett/Zorko2/rooms.json");
 
     if (!file.is_open()) {
         cerr << "Error: Unable to open rooms.json" << endl;
+        throw JsonLoadException("Failed to parse the rooms JSON file.");
         // Get the current working directory
         char cwd[PATH_MAX];
         if (!getcwd(cwd, sizeof(cwd))) {
@@ -54,6 +57,9 @@ vector<Room*> DataHandler::importRoomData() {
         rooms.push_back(newRoom);
     }
 
+    loadStatus.roomsLoaded = 1;
+    printLoadStatus();
+
     return rooms;
 }
 
@@ -62,6 +68,7 @@ vector<Item*> DataHandler::importItemData(){
 
     if (!file.is_open()) {
         cerr << "Error: Unable to open items.json" << endl;
+        throw JsonLoadException("Failed to parse the items JSON file.");
         return {}; // Return an empty vector to indicate failure
     }
 
@@ -86,6 +93,9 @@ vector<Item*> DataHandler::importItemData(){
         }
     }
 
+    loadStatus.itemsLoaded = 1;
+    printLoadStatus();
+
     return items;
 }
 
@@ -94,6 +104,7 @@ vector<Enemy*> DataHandler::importEnemyData(){
 
     if (!file.is_open()) {
         cerr << "Error: Unable to open enemies.json" << endl;
+        throw JsonLoadException("Failed to parse the enemies JSON file.");
         return {}; // Return an empty vector to indicate failure
     }
 
@@ -127,5 +138,13 @@ vector<Enemy*> DataHandler::importEnemyData(){
         enemies.push_back(newEnemy);
     }
 
+    loadStatus.enemiesLoaded = 1;
+    printLoadStatus();
     return enemies;
+}
+
+void DataHandler::printLoadStatus(){
+    cout << "Rooms loaded: "<< loadStatus.roomsLoaded << endl;
+    cout << "Enemies loaded: "<< loadStatus.enemiesLoaded << endl;
+    cout << "Items loaded: "<< loadStatus.itemsLoaded << endl;
 }

@@ -11,10 +11,11 @@
 #include "Item.h"
 #include "Battlable.h"
 #include "InputHandler.h"
+#include "showInventoryAbstract.h"
 
 using namespace std;
 
-class Player : public Subject, public Battlable {
+class Player : public Subject, public Battlable, public showInventoryAbstract {
 private:
     friend InputHandler;
     static Player* instance;
@@ -31,7 +32,7 @@ public:
 
     pair<int,int> getLoc();
     vector<Item*> getInventory();
-    void showInventory();
+    void showInventory() override;
 
     void pickup(Item*);
     void drop(Item*);

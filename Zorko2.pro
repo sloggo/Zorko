@@ -24,6 +24,8 @@ SOURCES += \
     Stage.cpp \
     Subject.cpp \
     Weapon.cpp \
+    box.cpp \
+    jsonloadexception.cpp \
     main.cpp \
     mainwindow.cpp \
     uicontroller.cpp \
@@ -45,8 +47,11 @@ HEADERS += \
     Stage.h \
     Subject.h \
     Weapon.h \
+    box.h \
     json.hpp \
+    jsonloadexception.h \
     mainwindow.h \
+    showInventoryAbstract.h \
     uicontroller.h \
     utils.h
 

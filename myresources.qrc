@@ -1,6 +1,5 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
-    <qresource>
+<RCC>
+    <qresource prefix="/">
         <file>items.json</file>
         <file>enemies.json</file>
         <file>rooms.json</file>

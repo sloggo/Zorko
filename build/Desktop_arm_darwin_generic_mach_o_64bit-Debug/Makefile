@@ -67,6 +67,7 @@ SOURCES       = ../../Battlable.cpp \
 		../../Stage.cpp \
 		../../Subject.cpp \
 		../../Weapon.cpp \
+		../../jsonloadexception.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../uicontroller.cpp \
@@ -87,6 +88,7 @@ OBJECTS       = Battlable.o \
 		Stage.o \
 		Subject.o \
 		Weapon.o \
+		jsonloadexception.o \
 		main.o \
 		mainwindow.o \
 		uicontroller.o \
@@ -466,7 +468,9 @@ DIST          = Zorko2.app/Contents/Info.plist \
 		../../Subject.h \
 		../../Weapon.h \
 		../../json.hpp \
+		../../jsonloadexception.h \
 		../../mainwindow.h \
+		../../showInventoryAbstract.h \
 		../../uicontroller.h \
 		../../utils.h ../../Battlable.cpp \
 		../../BattleHandler.cpp \
@@ -483,6 +487,7 @@ DIST          = Zorko2.app/Contents/Info.plist \
 		../../Stage.cpp \
 		../../Subject.cpp \
 		../../Weapon.cpp \
+		../../jsonloadexception.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp \
 		../../uicontroller.cpp \
@@ -1249,8 +1254,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../myresources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../../Battlable.h ../../BattleHandler.h ../../DataHandler.h ../../Enemy.h ../../GameState.h ../../InputHandler.h ../../Item.h ../../Observer.h ../../Player.h ../../Potion.h ../../Room.h ../../Runnable.h ../../Stage.h ../../Subject.h ../../Weapon.h ../../json.hpp ../../mainwindow.h ../../uicontroller.h ../../utils.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../Battlable.cpp ../../BattleHandler.cpp ../../DataHandler.cpp ../../Enemy.cpp ../../GameState.cpp ../../InputHandler.cpp ../../Item.cpp ../../Observer.cpp ../../Player.cpp ../../Potion.cpp ../../Room.cpp ../../Runnable.cpp ../../Stage.cpp ../../Subject.cpp ../../Weapon.cpp ../../main.cpp ../../mainwindow.cpp ../../uicontroller.cpp ../../utils.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../Battlable.h ../../BattleHandler.h ../../DataHandler.h ../../Enemy.h ../../GameState.h ../../InputHandler.h ../../Item.h ../../Observer.h ../../Player.h ../../Potion.h ../../Room.h ../../Runnable.h ../../Stage.h ../../Subject.h ../../Weapon.h ../../json.hpp ../../jsonloadexception.h ../../mainwindow.h ../../showInventoryAbstract.h ../../uicontroller.h ../../utils.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../Battlable.cpp ../../BattleHandler.cpp ../../DataHandler.cpp ../../Enemy.cpp ../../GameState.cpp ../../InputHandler.cpp ../../Item.cpp ../../Observer.cpp ../../Player.cpp ../../Potion.cpp ../../Room.cpp ../../Runnable.cpp ../../Stage.cpp ../../Subject.cpp ../../Weapon.cpp ../../jsonloadexception.cpp ../../main.cpp ../../mainwindow.cpp ../../uicontroller.cpp ../../utils.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../mainwindow.ui $(DISTDIR)/
 
 
@@ -1294,6 +1299,19 @@ compiler_moc_header_clean:
 moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
+		../../Item.h \
+		../../GameState.h \
+		../../Subject.h \
+		../../BattleHandler.h \
+		../../Enemy.h \
+		../../Battlable.h \
+		../../Weapon.h \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.7.0/macos/libexec/moc
 	/Users/joshsloggett/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/joshsloggett/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/joshsloggett/Zorko2 -I/Users/joshsloggett/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/joshsloggett/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/joshsloggett/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/joshsloggett/Qt/6.7.0/macos/lib ../../mainwindow.h -o moc_mainwindow.cpp
 
@@ -1330,10 +1348,16 @@ BattleHandler.o: ../../BattleHandler.cpp ../../BattleHandler.h \
 		../../Battlable.h \
 		../../Weapon.h \
 		../../Item.h \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../InputHandler.h \
 		../../Player.h \
 		../../Subject.h \
-		../../Observer.h
+		../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
+		../../showInventoryAbstract.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o BattleHandler.o ../../BattleHandler.cpp
 
 DataHandler.o: ../../DataHandler.cpp ../../DataHandler.h \
@@ -1345,7 +1369,8 @@ DataHandler.o: ../../DataHandler.cpp ../../DataHandler.h \
 		../../Battlable.h \
 		../../Weapon.h \
 		../../json.hpp \
-		../../Potion.h
+		../../Potion.h \
+		../../jsonloadexception.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DataHandler.o ../../DataHandler.cpp
 
 Enemy.o: ../../Enemy.cpp ../../Enemy.h \
@@ -1355,7 +1380,11 @@ Enemy.o: ../../Enemy.cpp ../../Enemy.h \
 		../../Player.h \
 		../../Subject.h \
 		../../Observer.h \
-		../../InputHandler.h
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
+		../../InputHandler.h \
+		../../showInventoryAbstract.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Enemy.o ../../Enemy.cpp
 
 GameState.o: ../../GameState.cpp ../../GameState.h \
@@ -1364,17 +1393,19 @@ GameState.o: ../../GameState.cpp ../../GameState.h \
 		../../Stage.h \
 		../../Item.h \
 		../../Observer.h \
-		../../mainwindow.h \
-		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
-		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../Subject.h \
 		../../utils.h \
 		../../DataHandler.h \
 		../../Enemy.h \
 		../../Battlable.h \
 		../../Weapon.h \
 		../../Player.h \
-		../../Subject.h \
 		../../InputHandler.h \
+		../../showInventoryAbstract.h \
+		../../mainwindow.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../BattleHandler.h \
 		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GameState.o ../../GameState.cpp
@@ -1384,13 +1415,14 @@ InputHandler.o: ../../InputHandler.cpp ../../InputHandler.h \
 		../../Player.h \
 		../../Subject.h \
 		../../Observer.h \
-		../../Battlable.h \
-		../../Weapon.h \
-		../../utils.h \
-		../../DataHandler.h \
 		../../Room.h \
 		../../Runnable.h \
 		../../Stage.h \
+		../../Battlable.h \
+		../../Weapon.h \
+		../../showInventoryAbstract.h \
+		../../utils.h \
+		../../DataHandler.h \
 		../../Enemy.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o InputHandler.o ../../InputHandler.cpp
 
@@ -1398,21 +1430,29 @@ Item.o: ../../Item.cpp ../../Item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Item.o ../../Item.cpp
 
 Observer.o: ../../Observer.cpp ../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
+		../../Item.h \
 		../../Player.h \
 		../../Subject.h \
-		../../Item.h \
 		../../Battlable.h \
 		../../Weapon.h \
-		../../InputHandler.h
+		../../InputHandler.h \
+		../../showInventoryAbstract.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Observer.o ../../Observer.cpp
 
 Player.o: ../../Player.cpp ../../Player.h \
 		../../Subject.h \
 		../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
 		../../Item.h \
 		../../Battlable.h \
 		../../Weapon.h \
-		../../InputHandler.h
+		../../InputHandler.h \
+		../../showInventoryAbstract.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o ../../Player.cpp
 
 Potion.o: ../../Potion.cpp ../../Potion.h \
@@ -1420,9 +1460,13 @@ Potion.o: ../../Potion.cpp ../../Potion.h \
 		../../Player.h \
 		../../Subject.h \
 		../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
 		../../Battlable.h \
 		../../Weapon.h \
-		../../InputHandler.h
+		../../InputHandler.h \
+		../../showInventoryAbstract.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Potion.o ../../Potion.cpp
 
 Room.o: ../../Room.cpp ../../Room.h \
@@ -1434,7 +1478,8 @@ Room.o: ../../Room.cpp ../../Room.h \
 		../../Observer.h \
 		../../Battlable.h \
 		../../Weapon.h \
-		../../InputHandler.h
+		../../InputHandler.h \
+		../../showInventoryAbstract.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Room.o ../../Room.cpp
 
 Runnable.o: ../../Runnable.cpp ../../Runnable.h
@@ -1448,22 +1493,44 @@ Stage.o: ../../Stage.cpp ../../Stage.h \
 		../../Enemy.h \
 		../../Battlable.h \
 		../../Weapon.h \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../utils.h \
 		../../DataHandler.h \
 		../../Room.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Stage.o ../../Stage.cpp
 
 Subject.o: ../../Subject.cpp ../../Subject.h \
-		../../Observer.h
+		../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
+		../../Item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Subject.o ../../Subject.cpp
 
 Weapon.o: ../../Weapon.cpp ../../Weapon.h \
 		../../Item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Weapon.o ../../Weapon.cpp
 
+jsonloadexception.o: ../../jsonloadexception.cpp ../../JsonLoadException.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jsonloadexception.o ../../jsonloadexception.cpp
+
 main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../Observer.h \
+		../../Room.h \
+		../../Runnable.h \
+		../../Stage.h \
+		../../Item.h \
+		../../GameState.h \
+		../../Subject.h \
+		../../BattleHandler.h \
+		../../Enemy.h \
+		../../Battlable.h \
+		../../Weapon.h \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
@@ -1471,14 +1538,148 @@ main.o: ../../main.cpp ../../mainwindow.h \
 mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../InputHandler.h \
-		../../Item.h \
-		ui_mainwindow.h \
-		../../GameState.h \
+		../../Observer.h \
 		../../Room.h \
 		../../Runnable.h \
 		../../Stage.h \
-		../../Observer.h
+		../../Item.h \
+		../../GameState.h \
+		../../Subject.h \
+		../../BattleHandler.h \
+		../../Enemy.h \
+		../../Battlable.h \
+		../../Weapon.h \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../InputHandler.h \
+		ui_mainwindow.h \
+		../../utils.h \
+		../../DataHandler.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QtWidgets \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsglobal.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractbutton.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemdelegate.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractitemview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractslider.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qabstractspinbox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaccessiblewidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qaction.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qactiongroup.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcalendarwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolordialog.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolormap.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcolumnview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcommandlinkbutton.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcommonstyle.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qcompleter.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdatawidgetmapper.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdatetimeedit.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdial.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdockwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdrawutil.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qerrormessage.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfileiconprovider.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfilesystemmodel.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfocusframe.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfontcombobox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qfontdialog.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qformlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qframe.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgesture.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgesturerecognizer.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsanchorlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicseffect.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsgridlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitemanimation.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslayoutitem.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicslinearlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsproxywidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicssceneevent.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicstransform.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicswidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgridlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgroupbox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qheaderview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qinputdialog.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qitemdelegate.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qitemeditorfactory.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qkeysequenceedit.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlayoutitem.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlcdnumber.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qlistwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmdiarea.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmdisubwindow.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenu.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmenubar.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qplaintextedit.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressbar.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qprogressdialog.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qproxystyle.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qradiobutton.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qrhiwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qrubberband.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollbar.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscroller.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qscrollerproperties.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qshortcut.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsizegrip.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsizepolicy.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qslider.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qspinbox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsplashscreen.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsplitter.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstackedlayout.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstatusbar.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyle.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleditemdelegate.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstylefactory.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleoption.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstylepainter.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qstyleplugin.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qsystemtrayicon.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtabbar.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtableview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtabwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtextbrowser.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtextedit.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbar.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbox.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtoolbutton.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtooltip.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreeview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreewidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtreewidgetitemiterator.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qtwidgetsversion.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qundoview.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwhatsthis.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidgetaction.h \
+		../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwizard.h \
+		../../Player.h \
+		../../showInventoryAbstract.h \
+		../../Potion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
 
 uicontroller.o: ../../uicontroller.cpp ../../uicontroller.h

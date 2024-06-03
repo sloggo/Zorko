@@ -10,8 +10,11 @@ using namespace std;
 
 class Weapon: public Item {
 private:
-    int dmg;
     int durability;
+    union{
+        int dmg;
+        int dmgMultiplied;
+    };
 public:
     Weapon(int,string,string,int,int);
     void use() override;

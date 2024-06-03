@@ -18,7 +18,7 @@ Player* Player::getInstance() {
     return instance;
 }
 
-Player::Player(Weapon* weaponIn) : Battlable(weaponIn), Subject() {
+Player::Player(Weapon* weaponIn) : Battlable(weaponIn), Subject(), showInventoryAbstract() {
     inventory.push_back(weaponIn);
     loc = make_pair(0,0);
 }

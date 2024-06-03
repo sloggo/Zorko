@@ -10,6 +10,7 @@
 #include "Potion.h"
 using namespace std;
 
+extern vector<Room*> rooms;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
